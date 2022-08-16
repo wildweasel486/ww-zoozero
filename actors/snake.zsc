@@ -1,0 +1,30 @@
+class ZZTSnake : ZZTMonster replaces ShotgunGuy
+{
+	Default
+	{
+		Health 40;
+		Translation "EGA2";
+	}
+	States
+	{
+		Spawn:
+			SNAK A 10 A_Look;
+			Loop;
+		See:
+			SNAK A 8 A_Chase;
+			Loop;
+		Pain:
+			"####" "#" 2 A_SetTranslation("EGA15");
+			"####" "#" 2 A_SetTranslation("EGA0");
+			"####" "#" 2 A_SetTranslation("EGA2");
+			Goto See;
+		Missile:
+			SNAK A 8 A_FaceTarget;
+			SNAK A 6 A_SpawnProjectile("ZZTBullet");
+			SNAK A 2 A_FaceTarget;
+			SNAK A 6 A_SpawnProjectile("ZZTBullet");
+			SNAK A 2 A_FaceTarget;
+			SNAK A 6 A_SpawnProjectile("ZZTBullet");
+			Goto See;
+	}
+}

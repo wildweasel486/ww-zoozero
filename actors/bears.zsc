@@ -1,0 +1,46 @@
+class ZZTBear : ZZTMonster replaces HellKnight
+{
+	Default
+	{
+		Health 250;
+		Translation "EGA6";
+		Speed 10;
+	}
+	States
+	{
+		Spawn:
+			BEAR A 0 NoDelay A_PainDie("ZZTBearCub");
+			BEAR A 10 A_Look;
+			Goto Spawn+1;
+		Pain:
+			"####" "#" 2 A_SetTranslation("EGA15");
+			"####" "#" 2 A_SetTranslation("EGA0");
+			"####" "#" 2 A_SetTranslation("EGA6");
+			Goto See;
+		See:
+			BEAR A 6 A_Chase;
+			Loop;
+	}
+}
+
+class ZZTBearCub : ZZTBear
+{
+	Default
+	{
+		Health 100;
+	}
+	States
+	{
+		Spawn:
+			BEAR B 10 A_Look;
+			Loop;
+		Pain:
+			"####" "#" 2 A_SetTranslation("EGA15");
+			"####" "#" 2 A_SetTranslation("EGA0");
+			"####" "#" 2 A_SetTranslation("EGA6");
+			Goto See;
+		See:
+			BEAR B 10 A_Chase;
+			Loop;
+	}
+}

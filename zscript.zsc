@@ -1,0 +1,39 @@
+version 4.8.2
+
+#include "actors/bullet.zsc"
+#include "actors/tiger.zsc"
+#include "actors/snake.zsc"
+#include "actors/bears.zsc"
+#include "actors/ruffian.zsc"
+#include "actors/lion.zsc"
+#include "actors/centipede.zsc"
+#include "actors/turret.zsc"
+
+class ZZTMonster : Actor
+{
+	string EGADefaultColor;
+	Default
+	{
+		Health 1;
+		Radius 20;
+		Height 56;
+		Speed 8;
+		PainChance 255;
+		Scale 6.0;
+		Monster;
+		+FLOORCLIP
+		+NOBLOOD
+		DeathSound "zzt/death";
+	}
+	States
+	{
+		Death:
+			TNT1 A 1;
+			Stop;
+	}
+}
+
+/* re: default translations:
+You can modify the translation field of an actor directly, as long as you pass a proper translation value to it. So, it can't directly accept a TRNSLATE name, but it can be used to copy translation from another actor (translation = <pointer to actor>. translation) or get the default value ( translation = default. translation).
+You can also store the current translation in a uint-type field,  then later restore to it (in case the actor wasn't using its default translation when you set its translation)
+--agent_ash via zdf discord */

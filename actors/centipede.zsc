@@ -1,0 +1,16 @@
+class ZZTCentipedeHead : ZZTMonster replaces Revenant
+{
+	Default
+	{
+		Translation "EGA13";
+	}
+	States
+	{
+		Spawn:
+			PEDE A 10 A_Look;
+			Loop;
+		See:
+			PEDE A 8 A_Chase;
+			Loop;
+	}
+}

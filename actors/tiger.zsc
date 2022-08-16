@@ -1,0 +1,26 @@
+class ZZTTiger : ZZTMonster replaces Zombieman
+{
+	Default
+	{
+		Health 30;
+		Translation "EGA11";
+	}
+	States
+	{
+		Spawn:
+			TIGR A 10 A_Look;
+			Loop;
+		See:
+			TIGR A 8 A_Chase;
+			Loop;
+		Pain:
+			"####" "#" 2 A_SetTranslation("EGA15");
+			"####" "#" 2 A_SetTranslation("EGA0");
+			"####" "#" 2 A_SetTranslation("EGA11");
+			Goto See;
+		Missile:
+			TIGR A 8 A_FaceTarget;
+			TIGR A 6 A_SpawnProjectile("ZZTBullet");
+			Goto See;
+	}
+}

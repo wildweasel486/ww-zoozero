@@ -1,0 +1,22 @@
+class ZZTRuffian : ZZTMonster replaces Demon
+{
+	Default
+	{
+		Health 150;
+		Translation "EGA13";
+	}
+	States
+	{
+		Spawn:
+			RUFF A 10 A_Look;
+			Loop;
+		Pain:
+			"####" "#" 2 A_SetTranslation("EGA15");
+			"####" "#" 2 A_SetTranslation("EGA0");
+			"####" "#" 2 A_SetTranslation("EGA13");
+			Goto See;
+		See:
+			RUFF A 8 A_Chase;
+			Loop;
+	}
+}

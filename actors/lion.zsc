@@ -1,0 +1,23 @@
+class ZZTLion : ZZTMonster replaces Spectre
+{
+	Default
+	{
+		Health 200;
+		Speed 12;
+		Translation "EGA12";
+	}
+	States
+	{
+		Spawn:
+			LION A 10 A_Look;
+			Loop;
+		Pain:
+			"####" "#" 2 A_SetTranslation("EGA15");
+			"####" "#" 2 A_SetTranslation("EGA0");
+			"####" "#" 2 A_SetTranslation("EGA12");
+			Goto See;
+		See:
+			LION A 6 A_FastChase;
+			Loop;
+	}
+}

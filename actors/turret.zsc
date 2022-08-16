@@ -1,0 +1,24 @@
+class ZZTTurret : ZZTMonster replaces ChaingunGuy
+{
+	Default
+	{
+		Health 100;
+		Translation "EGA15";
+		Speed 0;
+		+MISSILEMORE
+	}
+	States
+	{
+		Spawn:
+			TURT ABCD 5 A_Look;
+			Loop;
+		See:
+			TURT ABCD 5 A_Chase;
+			Loop;
+		Missile:
+			TURT ABCD 4 A_FaceTarget;
+			TURT ABCD 4 BRIGHT A_SpawnProjectile("ZZTBullet");
+			TURT A 1 A_CPosRefire;
+			Goto Missile+1;
+	}
+}

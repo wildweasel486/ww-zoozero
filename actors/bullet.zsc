@@ -1,0 +1,19 @@
+class ZZTBullet : Actor
+{
+	Default
+	{
+		Radius 8;
+		Height 8;
+		Speed 15;
+		Damage 2;
+		Scale 4.0;
+		SeeSound "zzt/enemyshoot";
+		PROJECTILE;
+	}
+	States
+	{
+		Spawn:
+			BULT A -1;
+			Loop;
+	}
+}
